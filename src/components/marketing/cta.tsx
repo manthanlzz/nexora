@@ -8,9 +8,9 @@ import Particles from "../ui/particles";
 
 const CTA = () => {
     return (
-        <div className="relative flex flex-col items-center justify-center w-full py-20">
-            <Container className="py-20 max-w-6xl mx-auto">
-                <div className="relative flex flex-col items-center justify-center py-12 lg:py-20 px-0 rounded-2xl lg:rounded-3xl bg-background/20 text-center border border-foreground/20 overflow-hidden">
+        <div className="relative flex flex-col items-center justify-center w-full py-16 px-4 sm:py-20 sm:px-6 md:py-24 md:px-12 lg:py-28 lg:px-20">
+            <Container className="max-w-6xl mx-auto">
+                <div className="relative flex flex-col items-center justify-center py-12 px-6 sm:py-16 sm:px-12 lg:py-20 lg:px-16 rounded-2xl lg:rounded-3xl bg-background/20 text-center border border-foreground/20 overflow-hidden">
                     <Particles
                         refresh
                         ease={80}
@@ -54,7 +54,7 @@ const CTA = () => {
                 </div>
             </Container>
         </div>
-    )
+    );
 };
 
-export default CTA
+export default CTA;

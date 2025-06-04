@@ -50,7 +50,7 @@ const Integration = () => {
     };
 
     return (
-        <div className="relative flex flex-col items-center justify-center w-full py-20 scale-">
+        <div className="relative flex flex-col items-center justify-center w-full py-16 px-4 sm:py-20 sm:px-6 md:py-24 md:px-12 lg:py-28 lg:px-20">
             <Container className="relative">
                 <div className="relative flex flex-col lg:hidden items-center justify-center overflow-visible">
                     <div className="absolute top-1/2 -translate-y-1/2 right-1/4 w-3/5 h-14 lg:h-20 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full -rotate-12 blur-[6.5rem] -z-10"></div>
@@ -68,12 +68,12 @@ const Integration = () => {
                 </div>
             </Container>
 
-            <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:top-1/4 inset-x-0 mt-12 lg:mt-0">
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:top-1/4 inset-x-0 mt-12 lg:mt-0 px-2 sm:px-0">
                 <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold !leading-snug">
                     Social Media Integration
                 </h2>
             </div>
-            <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:bottom-1/4 inset-x-0 z-20 mt-8 lg:mt-0">
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:bottom-1/4 inset-x-0 z-20 mt-8 lg:mt-0 px-2 sm:px-0">
                 <Link href="#">
                     <Button size="lg">
                         See all Integrations
@@ -83,7 +83,7 @@ const Integration = () => {
             </div>
 
             <Container delay={0.3}>
-                <div className="relative hidden lg:flex items-center justify-center overflow-visible">
+                <div className="relative hidden lg:flex items-center justify-center overflow-visible px-4">
                     <div className="absolute top-1/2 -translate-y-1/2 right-1/4 w-3/5 h-14 lg:h-20 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full -rotate-12 blur-[6.5rem] -z-10"></div>
 
                     <div className="relative flex h-dvh w-full flex-col items-center justify-center overflow-visible">

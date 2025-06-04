@@ -1,107 +1,100 @@
-import { ArrowRightIcon } from "lucide-react";
+"use client";
+
+import { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 import Image from "next/image";
-import Link from "next/link";
 import Container from "../global/container";
-import Icons from "../global/icons";
-import { Button } from "../ui/button";
-import { OrbitingCircles } from "../ui/orbiting-circles";
 
 const Hero = () => {
-    return (
-        <div className="relative flex flex-col items-center justify-center w-full py-20">
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
 
-            <div className="absolute flex lg:hidden size-40 rounded-full bg-blue-500 blur-[10rem] top-0 left-1/2 -translate-x-1/2 -z-10"></div>
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-            <div className="flex flex-col items-center justify-center gap-y-8 relative">
-                <Container className="hidden lg:flex absolute inset-0 top-0 mb-auto flex-col items-center justify-center w-full min-h-screen -z-10">
-                    <OrbitingCircles
-                        speed={0.5}
-                        radius={300}
-                    >
-                        <Icons.circle1 className="size-4 text-foreground/70" />
-                        <Icons.circle2 className="size-1 text-foreground/80" />
-                    </OrbitingCircles>
-                    <OrbitingCircles
-                        speed={0.25}
-                        radius={400}
-                    >
-                        <Icons.circle2 className="size-1 text-foreground/50" />
-                        <Icons.circle1 className="size-4 text-foreground/60" />
-                        <Icons.circle2 className="size-1 text-foreground/90" />
-                    </OrbitingCircles>
-                    <OrbitingCircles
-                        speed={0.1}
-                        radius={500}
-                    >
-                        <Icons.circle2 className="size-1 text-foreground/50" />
-                        <Icons.circle2 className="size-1 text-foreground/90" />
-                        <Icons.circle1 className="size-4 text-foreground/60" />
-                        <Icons.circle2 className="size-1 text-foreground/90" />
-                    </OrbitingCircles>
-                </Container>
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
 
-                <div className="flex flex-col items-center justify-center text-center gap-y-4 bg-background/0">
-                    <Container className="relative hidden lg:block overflow-hidden">
-                        <button className="group relative grid overflow-hidden rounded-full px-2 py-1 shadow-[0_1000px_0_0_hsl(0_0%_15%)_inset] transition-colors duration-200 mx-auto">
-                            <span>
-                                <span className="spark mask-gradient absolute inset-0 h-[100%] w-[100%] animate-flip overflow-hidden rounded-full [mask:linear-gradient(white,_transparent_50%)] before:absolute before:aspect-square before:w-[200%] before:rotate-[-90deg] before:animate-rotate before:bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] before:content-[''] before:[inset:0_auto_auto_50%] before:[translate:-50%_-15%]" />
-                            </span>
-                            <span className="backdrop absolute inset-[1px] rounded-full bg-background transition-colors duration-200 group-hover:bg-neutral-800" />
-                            <span className="z-10 py-0.5 text-sm text-neutral-100 flex items-center">
-                                <span className="px-2 py-[0.5px] h-[18px] tracking-wide flex items-center justify-center rounded-full bg-gradient-to-r from-sky-400 to-blue-600 text-[9px] font-medium mr-2 text-white">
-                                    NEW
-                                </span>
-                                Explore the 2024 recap
-                            </span>
-                        </button>
-                    </Container>
-                    <Container delay={0.15}>
-                        <h1 className="text-4xl md:text-4xl lg:text-7xl font-bold text-center !leading-tight max-w-4xl mx-auto">
-                            Transform your {" "}
-                            <span className="">
-                                marketing {" "}
-                            </span>
-                            with AI Precision
-                        </h1>
-                    </Container>
-                    <Container delay={0.2}>
-                        <p className="max-w-xl mx-auto mt-2 text-base lg:text-lg text-center text-muted-foreground">
-                            AI-powered automation and insights to maximize your campaigns and grow your brand.
-                        </p>
-                    </Container>
-                    <Container delay={0.25} className="z-20">
-                        <div className="flex items-center justify-center mt-6 gap-x-4">
-                            <Link href="#" className="flex items-center gap-2 group">
-                                <Button size="lg">
-                                    Start Free Trial
-                                    <ArrowRightIcon className="size-4 group-hover:translate-x-1 transition-all duration-300" />
-                                </Button>
-                            </Link>
-                        </div>
-                    </Container>
-                    <Container delay={0.3} className="relative">
-                        <div className="relative rounded-xl lg:rounded-[32px] border border-border p-2 backdrop-blur-lg mt-10 max-w-6xl mx-auto">
-                            <div className="absolute top-1/8 left-1/2 -z-10 bg-gradient-to-r from-sky-500 to-blue-600 w-1/2 lg:w-3/4 -translate-x-1/2 h-1/4 -translate-y-1/2 inset-0 blur-[4rem] lg:blur-[10rem] animate-image-glow"></div>
-                            <div className="hidden lg:block absolute -top-1/8 left-1/2 -z-20 bg-blue-600 w-1/4 -translate-x-1/2 h-1/4 -translate-y-1/2 inset-0 blur-[10rem] animate-image-glow"></div>
+  const imageRef = useRef<HTMLDivElement>(null);
 
-                            <div className="rounded-lg lg:rounded-[22px] border border-border bg-background">
-                                <Image
-                                    src="/images/dashboard.png"
-                                    alt="dashboard"
-                                    width={1920}
-                                    height={1080}
-                                    className="rounded-lg lg:rounded-[20px]"
-                                />
-                            </div>
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start 0.95", "end start"], // 👈 kicks in right after slight scroll
+  });
 
-                        </div>
-                        <div className="bg-gradient-to-t from-background to-transparent absolute bottom-0 inset-x-0 w-full h-1/2"></div>
-                    </Container>
+  const y = useTransform(scrollYProgress, [0, 0.3], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.95, 1]);
 
-                </div>
-            </div>
-        </div>
-    )
+  return (
+    <section className="relative w-full overflow-hidden text-white">
+      {/* Hero Text */}
+ <div className="min-h-screen px-6 mt-20 sm:px-12 md:px-24 lg:px-32 py-24 relative z-10">
+  {/* Heading */}
+  <div>
+    <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-left">
+      Harness the full <span className="text-blue-500">power of AI</span> to drive <br />smarter decisions.<br />
+       Deliver hyper-personalized<br /> experiences at scale.<br />
+        
+     
+    </h1>
+  </div>
+
+  {/* Paragraph – slightly pushed down & right-aligned */}
+  <div className="mt-40 flex justify-end">
+  <p className="text-gray-400 text-right max-w-3xl text-sm md:text-base lg:text-2xl leading-relaxed">
+  <span className="block sm:inline">
+    AI is no longer a tool it's the strategist,
+  </span>
+  <span className="block sm:inline">
+    the analyst, and the engine. It never sleeps.
+  </span>
+  <span className="block sm:inline">
+    It never slows down. It learns, adapts, and scales.
+  </span>
+  <span className="block sm:inline">
+    And it's here to build brands that don't just grow they dominate.
+  </span>
+</p>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+      {/* Image: hidden at first, appears on slight scroll */}
+      <div
+        ref={imageRef}
+        className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen mt-12"
+      >
+        <motion.div
+          style={{ y, opacity, scale }}
+          className="w-full h-full"
+        >
+          <Image
+            src="/images/dashboard.png"
+            alt="Dashboard"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
-export default Hero
+export default Hero;

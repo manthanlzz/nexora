@@ -4,16 +4,16 @@ import Container from "../global/container";
 
 const LanguageSupport = () => {
     return (
-        <div className="relative flex flex-col items-center justify-center max-w-5xl py-20 mx-auto">
+        <div className="relative flex flex-col items-center justify-center max-w-5xl py-16 px-4 sm:py-20 sm:px-6 md:py-24 md:px-12 mx-auto">
             <Container>
-                <div className="flex flex-col items-center justify-center w-full max-w-3xl mx-auto text-center">
+                <div className="flex flex-col items-center justify-center w-full max-w-3xl mx-auto text-center px-2 sm:px-0">
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mb-6">
                         Instantly translate your content into 60+ <span className="font-subheading italic">languages</span>
                     </h2>
                 </div>
             </Container>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-start justify-start max-w-4xl mx-auto pt-10 relative w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 items-start justify-start max-w-4xl mx-auto pt-10 relative w-full px-2 sm:px-0">
 
                 <div className="absolute top-1/2 -translate-y-1/2 right-1/4 w-3/5 h-14 lg:h-20 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full -rotate-12 blur-[10rem] -z-10"></div>
 
@@ -38,4 +38,4 @@ const LanguageSupport = () => {
     )
 };
 
-export default LanguageSupport
+export default LanguageSupport;
