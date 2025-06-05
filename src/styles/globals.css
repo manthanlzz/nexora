@@ -149,3 +149,9 @@ body {
   margin: 0;
   padding: 0;
 }
+html, body {
+  overflow: visible;
+  height: auto;
+  scroll-behavior: auto; /* don't conflict with Lenis */
+}
+

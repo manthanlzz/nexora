@@ -60,7 +60,7 @@ export const SUPPORTED_LANGUAGES = [
         code: "kk"
     },
     {
-        name: "Indian",
+        name: "Hindi",
         flag: "🇮🇳",
         code: "hi"
     },

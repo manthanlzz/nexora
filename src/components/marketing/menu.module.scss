@@ -1,0 +1,62 @@
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2rem;
+  gap: 1.5rem;
+  background: transparent; // overlay handled by stairs background
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.menuLink {
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  color: #3b82f6; // blue-500
+  transition: color 0.3s;
+
+  &:hover {
+    color: #1e40af; // blue-900 darker on hover
+  }
+}
+.menuContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  // vertically center
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  color: #3b82f6; // blue-500
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.menuLink {
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  color: #3b82f6;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #1e40af; // blue-900 darker on hover
+  }
+}
+.closeButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  z-index: 2000;
+
+  &:hover {
+    color: #1e40af;
+  }
+}

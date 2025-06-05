@@ -1,0 +1,27 @@
+.stairs {
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1500; // on top
+  height: 100vh;
+  display: flex;
+  pointer-events: none;
+  width: 100vw;
+}
+
+.stair {
+  width: 20vw;
+  height: 100%;
+  background-color: #3b82f6; // blue-500
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #1e40af; // blue-900 (dark overlay)
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -1;
+}
